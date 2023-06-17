@@ -1,0 +1,98 @@
+div#header {
+  background: black;
+  color: #3498db;
+  display: flex;
+}
+div#header #branding {
+  display: flex;
+}
+div#header #branding h1 {
+  color: #3498db;
+}
+div#header #branding .brand-container {
+  display: flex;
+}
+div#header #branding .brand-container a.brand-link {
+  display: flex;
+}
+div#header #branding .brand-container a.brand-link img {
+  max-height: 40px;
+}
+
+@media (max-width: 1024px) {
+  div#header #branding {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 1024px) {
+  .login div#header #branding {
+    margin-bottom: 0;
+  }
+}
+#branding #site-name {
+  color: white;
+}
+#branding #site-name .site-name-dl {
+  color: #3498db;
+  font-weight: 600;
+}
+
+div.breadcrumbs {
+  background: #494949;
+}
+
+#content .module caption {
+  background: #3498db;
+  border-radius: 5px;
+}
+#content .module h2 {
+  background: #3498db;
+  color: white;
+}
+
+a:link,
+a:visited {
+  color: #217dbb;
+}
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+  background: #3498db;
+}
+.button:hover,
+.button:active,
+.button:focus,
+input[type="submit"]:hover,
+input[type="submit"]:active,
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="button"]:active,
+input[type="button"]:focus,
+.submit-row input:hover,
+.submit-row input:active,
+.submit-row input:focus,
+a.button:hover,
+a.button:active,
+a.button:focus {
+  background: #258cd1;
+}
+
+.button.default,
+input[type="submit"].default,
+.submit-row input.default {
+  background: #5faee3;
+}
+.button.default:hover,
+.button.default:active,
+.button.default:focus,
+input[type="submit"].default:hover,
+input[type="submit"].default:active,
+input[type="submit"].default:focus,
+.submit-row input.default:hover,
+.submit-row input.default:active,
+.submit-row input.default:focus {
+  background: #4aa3df;
+}

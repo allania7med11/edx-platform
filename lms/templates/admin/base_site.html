@@ -1,22 +1,28 @@
 {% extends "admin/base.html" %}
-{% load i18n admin_urls %}
-{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% load i18n static %}
+
+{% block title %}{{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block extrahead %}
+  <link rel="icon" href="{% static 'ibl/admin/img/favicon.png' %}" sizes="32x32" />
+  <link rel="icon" href="{% static 'ibl/admin/img/favicon.png' %}" sizes="192x192" />
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'ibl/admin/css/ibl_admin.css' %}" />
+{% endblock %}
+
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+
+<div class="brand-container">
+  <a href="{% url 'admin:index' %}" class="brand-link">
+    <img title="{{ site_header|default:_('Django administration') }}" alt="{{ site_header|default:_('Django administration') }}" src="{% static 'ibl/admin/img/ibl-logo.png' %}">
+  </a>
+</div>
+
+<!-- <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1> -->
+
 {% endblock %}
+
 {% block nav-global %}{% endblock %}
-{% block userlinks %}
-    {% if site_url %}
-        <a href="{{ site_url }}">{% trans 'View site' as tmsg%}{{tmsg|force_escape}}</a> /
-    {% endif %}
-    {% if user.is_active and user.is_staff %}
-        {% url 'django-admindocs-docroot' as docsroot %}
-        {% if docsroot %}
-            <a href="{{ docsroot }}">{% trans 'Documentation' as tmsg%}{{tmsg|force_escape}}</a> /
-        {% endif %}
-    {% endif %}
-
-    <a href="{% url 'logout' %}">{% trans 'Log out' as tmsg%}{{tmsg|force_escape}}</a>
-
-
-{% endblock %}
