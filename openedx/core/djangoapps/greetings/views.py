@@ -5,6 +5,7 @@ from edx_rest_framework_extensions.auth.jwt.authentication import JwtAuthenticat
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
+from openedx.core.djangoapps.greetings.serializers import GreetingSerializer
 
 from openedx.core.lib.api.authentication import BearerAuthentication
 
@@ -12,19 +13,13 @@ from openedx.core.lib.api.authentication import BearerAuthentication
 class GreetingsCreateView(APIView):
     authentication_classes = (JwtAuthentication, BearerAuthentication, SessionAuthentication,)
     permission_classes = (IsAuthenticated,)
-    def get(self, request):
-        """
-        Handle GET requests.
-        """
-        data = {"message": "This is a GET request!"}
-        return Response(data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        """
-        Handle POST requests.
-        """
-        data = {"message": "This is a POST request!"}
-        return Response(data, status=status.HTTP_201_CREATED)
+        serializer = GreetingSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
     
