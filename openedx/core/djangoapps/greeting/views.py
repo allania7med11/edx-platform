@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from oauth2_provider.contrib.rest_framework import OAuth2Authentication
-from .models import Greeting  
+from openedx.core.djangoapps.greeting.models import Greeting
 
 class GreetingView(APIView):
     authentication_classes = [OAuth2Authentication]
