@@ -3272,7 +3272,7 @@ INSTALLED_APPS = [
     'openedx.core.djangoapps.notifications',
 
     # Greeting
-    'openedx.core.djangoapps.greeting',
+    'openedx.core.djangoapps.greetings',
 ]
 
 ######################### CSRF #########################################
