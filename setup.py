@@ -153,7 +153,7 @@ setup(
             "program_enrollments = lms.djangoapps.program_enrollments.apps:ProgramEnrollmentsConfig",
             "courseware_api = openedx.core.djangoapps.courseware_api.apps:CoursewareAPIConfig",
             "course_apps = openedx.core.djangoapps.course_apps.apps:CourseAppsConfig",
-            "greeting = openedx.core.djangoapps.greeting.apps:GreetingConfig",
+            "greetings = openedx.core.djangoapps.greetings.apps:GreetingConfig",
         ],
         "cms.djangoapp": [
             "announcements = openedx.features.announcements.apps:AnnouncementsConfig",

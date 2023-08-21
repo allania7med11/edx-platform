@@ -214,8 +214,8 @@ urlpatterns = [
     ),
     path('api/discounts/', include(('openedx.features.discounts.urls', 'openedx.features.discounts'),
                                    namespace='api_discounts')),
-    path('api/greeting/', include(('openedx.core.djangoapps.greeting.urls', 'openedx.core.djangoapps.greeting'), 
-                                  namespace='api_greeting')),
+    # path('api/greeting/', include(('openedx.core.djangoapps.greetings.urls', 'openedx.core.djangoapps.greetings'), 
+    #                               namespace='api_greetings')),
 
     # Provide URLs where we can see the rendered error pages without having to force an error.
     path('403', handler403, name='render_403'),
