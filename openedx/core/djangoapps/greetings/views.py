@@ -17,9 +17,7 @@ log = logging.getLogger(__name__)
 
 class GreetingsCreateView(APIView):
     authentication_classes = (
-        JwtAuthentication,
         BearerAuthentication,
-        SessionAuthentication,
     )
     permission_classes = (IsAuthenticated,)
 
@@ -29,7 +27,8 @@ class GreetingsCreateView(APIView):
             greeting: Greeting = serializer.save()
             log.info(f"Greeting {greeting.text} at {greeting.created_at}")
             if greeting.text == "hello":
-                original_response = make_original_greeting_call("goodbye")
+                access_token = request.auth.token
+                original_response = make_original_greeting_call(access_token, "goodbye")
                 return Response(original_response.json(), status=original_response.status_code)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
